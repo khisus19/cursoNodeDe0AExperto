@@ -72,9 +72,3 @@ getInfoUsuario(id)
   .then( msg => console.log(msg))
   .catch(err => console.log(err))
 
-
-/* tortillas
-    toallitas
-    Jamon de elias
-    queso
-*/
