@@ -7,7 +7,7 @@ console.clear();
 // console.log(argv);
 
 
-crearArchivoDeMultiplicar(argv.b, argv.l)
+crearArchivoDeMultiplicar(argv.b, argv.l, argv.h)
   .then(nombreArchivo => console.log(nombreArchivo))
   .catch(err => console.log(err))
 

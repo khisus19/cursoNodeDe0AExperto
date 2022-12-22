@@ -1,13 +1,14 @@
 const fs = require("fs");
 const colors = require("colors");
 let salida = "";
+let consola = "";
 
-const crearArchivoDeMultiplicar = async (base = 5, listar) => {
+const crearArchivoDeMultiplicar = async (base = 5, listar, hasta = 10) => {
 
   try {
-    for (let i = 1; i < 11; i++) {
-      // salida += `${base} x ${i} = ${base * i}\n`;
-      salida += base.toString().red + " x ".cyan + i.toString().blue + " = " + (base * i).toString().green + "\n";
+    for (let i = 1; i < hasta + 1; i++) {
+      salida += `${base} x ${i} = ${base * i}\n`;
+      consola += `${base.toString().red} x ${i.toString().blue} = ${(base * i).toString().green}\n`;
     }
 
     if(listar) {
@@ -15,7 +16,7 @@ const crearArchivoDeMultiplicar = async (base = 5, listar) => {
       // console.log(`      Tabla del: ${base}`);
       console.log("      Tabla del: ".green + base.toString().red);
       console.log("==============================".yellow);
-      console.log(salida);
+      console.log(consola);
     }
 
     fs.writeFileSync(`../03-bases-node/tabla-${base}.txt`, salida);

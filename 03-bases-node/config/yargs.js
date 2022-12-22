@@ -13,6 +13,12 @@ const argv = require("yargs")
                 default: false,
                 describe: "Muestra en consola la tabla de multiplicar"
               })
+              .option("h", {
+                alias: "hasta",
+                type: "number",
+                default: false,
+                describe: "Es el numero de multiplicaciones que tendra la tabla"
+              })
               .check( (argv, options) => {
                 if( isNaN(argv.b)) {
                   throw "La base debe ser numerica"
