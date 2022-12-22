@@ -19,7 +19,7 @@ const crearArchivoDeMultiplicar = async (base = 5, listar, hasta = 10) => {
       console.log(consola);
     }
 
-    fs.writeFileSync(`../03-bases-node/tabla-${base}.txt`, salida);
+    fs.writeFileSync(`../03-bases-node/salida/tabla-${base}.txt`, salida);
 
 
     return "Archivo " + ("tabla-" + base + ".txt").toString().rainbow + " creado";
