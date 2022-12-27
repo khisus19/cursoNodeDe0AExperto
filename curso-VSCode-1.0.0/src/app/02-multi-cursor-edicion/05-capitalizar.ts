@@ -16,6 +16,10 @@
         Mostrar la paleta de comandos
         ⇧ ⌘ P, F1
         Ctrl + Shift + P, F1
+    Capitalizar:
+        Ctrl + Shift + H
+    Lowercase:
+        Ctrl + Alt + Shift + H
 */
 
 function capitalizados() {
