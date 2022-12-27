@@ -2,7 +2,7 @@
   "name": "04-app-node-tasklist",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "exports": "./app.js",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -12,5 +12,8 @@
   "dependencies": {
     "colors": "^1.4.0",
     "inquirer": "^9.1.4"
+  },
+  "engines": {
+    "node": ">=14.16"
   }
 }
