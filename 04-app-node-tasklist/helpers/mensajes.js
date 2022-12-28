@@ -14,7 +14,6 @@ const mostrarMenu = () => {
     console.log(`${ "4.".green } listar tareas pendientes`);
     console.log(`${ "5.".green } Completar tarea(s)`);
     console.log(`${ "6.".green } Borrar tarea`);
-    console.log(`${ "7.".green } Crear tarea`);
     console.log(`${ "0.".green } Salir\n`);
   
     const readLine = require("readline").createInterface({
