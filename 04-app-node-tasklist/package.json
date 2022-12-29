@@ -11,7 +11,8 @@
   "license": "MIT",
   "dependencies": {
     "colors": "^1.4.0",
-    "inquirer": "^9.1.4"
+    "inquirer": "^9.1.4",
+    "nanoid": "^4.0.0"
   },
   "engines": {
     "node": ">=14.16"
