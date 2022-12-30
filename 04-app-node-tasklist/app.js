@@ -5,7 +5,6 @@ import Tareas from "./models/tareas.js";
 
 
 const main = async () => {
-  console.log("Hola, mundo");
 
   let opt = "";
   const tareas = new Tareas();
@@ -17,13 +16,15 @@ const main = async () => {
       case "1":
         // Crear opcion
         const desc = await leerInput("Descripción:");
-        tareas.crearTarea(desc)
-        console.log(desc);
+        tareas.crearTarea(desc);
         break;
 
       case "2":
-        console.log( tareas._listado );
-  
+        console.log( tareas.listadoArr );
+        break;
+
+      case "3":
+        
         break;
     }
 
