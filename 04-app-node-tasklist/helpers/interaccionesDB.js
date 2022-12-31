@@ -4,7 +4,7 @@ const path = "./db/data.json"
 
 
 export const guardarDB = ( data ) => {
-  fs.writeFileSync(path, data)
+  fs.writeFileSync(path, JSON.stringify(data) );
 }
 
 export const leerDB = () => {
@@ -14,9 +14,9 @@ export const leerDB = () => {
   }
 
   const info = fs.readFileSync(path, {encoding: "utf-8"});
-  const data = JSON.parse( info );
+  const data = JSON.parse(info);
 
-  console.log(data);
+  console.log("Esta es data", data);
 
-  return null;
+  return data;
 }
