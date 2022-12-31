@@ -1,6 +1,7 @@
 import colors from "colors";
 
 import { inquirerMenu, pausaMenu, leerInput } from "./helpers/inquirer.js";
+import { guardarDB, leerDB } from "./helpers/interaccionesDB.js";
 import Tareas from "./models/tareas.js";
 
 
@@ -8,6 +9,15 @@ const main = async () => {
 
   let opt = "";
   const tareas = new Tareas();
+
+  const tareasDB = leerDB();
+
+  if( tareasDB ) {
+    // Establecer las tareas
+  }
+
+  await pausaMenu();
+
 
   do {
     opt = await inquirerMenu();
@@ -27,6 +37,9 @@ const main = async () => {
         
         break;
     }
+
+
+    // guardarDB( JSON.stringify(tareas.listadoArr) );
 
     await pausaMenu();
 
