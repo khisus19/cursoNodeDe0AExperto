@@ -11,14 +11,14 @@ const main = async () => {
   const tareas = new Tareas();
 
   const tareasDB = leerDB();
-  console.log("tareasDB", tareasDB);
+  // console.log("tareasDB", tareasDB);
 
   if( tareasDB ) {
     // Establecer las tareas
     tareas.cargarTareasFromArray(tareasDB)
   }
 
-  await pausaMenu();
+  // await pausaMenu();
 
 
   do {
