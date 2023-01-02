@@ -18,3 +18,9 @@ export const leerDB = () => {
 
   return data;
 }
+
+export const filtrarTareas = (tareasArr, stateOfTask) => {
+  return tareasArr.filter(tarea => {
+    return typeof tarea.completadoEn === stateOfTask;
+  })
+}

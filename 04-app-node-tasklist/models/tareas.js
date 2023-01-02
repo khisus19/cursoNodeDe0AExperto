@@ -1,3 +1,5 @@
+import colors from "colors";
+
 import Tarea from "./tarea.js";
 
 
@@ -36,7 +38,16 @@ class Tareas {
     this._listado[tarea.id] = tarea;
   }
 
+  listadoCompleto() {
+    this.listadoArr.map( (tarea, index) => {
+      let tareaColor = tarea.completadoEn === null ? "No completada".red : tarea.completadoEn.toString().green;
+      console.log( ` ${(index + 1).toString().blue}. ${tarea.desc} :: ${tareaColor}`)
+    })
+  }
 
+  listadoFiltrado(isCompleted) {
+    
+  }
 
 }
 

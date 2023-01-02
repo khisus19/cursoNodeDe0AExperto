@@ -13,7 +13,7 @@ const preguntas = [
       },
       {
         value: "2",
-        name: `${ "2.".yellow } Listar tarea`
+        name: `${ "2.".yellow } Listar tareas`
       },
       {
         value: "3",

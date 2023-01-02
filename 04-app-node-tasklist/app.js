@@ -1,7 +1,7 @@
 import colors from "colors";
 
 import { inquirerMenu, pausaMenu, leerInput } from "./helpers/inquirer.js";
-import { guardarDB, leerDB } from "./helpers/interaccionesDB.js";
+import { filtrarTareas, guardarDB, leerDB } from "./helpers/interaccionesDB.js";
 import Tareas from "./models/tareas.js";
 
 
@@ -32,11 +32,15 @@ const main = async () => {
         break;
 
       case "2":
-        console.log( tareas.listadoArr );
+        tareas.listadoCompleto();
         break;
 
       case "3":
         
+        break;
+
+      case "4":
+        console.log( filtrarTareas(tareas.listadoArr, null) );
         break;
     }
 
