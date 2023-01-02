@@ -36,11 +36,11 @@ const main = async () => {
         break;
 
       case "3":
-        
+        tareas.listadoFiltrado();
         break;
 
       case "4":
-        console.log( filtrarTareas(tareas.listadoArr, null) );
+        tareas.listadoFiltrado( false );
         break;
     }
 

@@ -33,20 +33,28 @@ class Tareas {
 
 
   crearTarea( desc = "" ){
-
     const tarea = new Tarea(desc);
     this._listado[tarea.id] = tarea;
   }
 
   listadoCompleto() {
     this.listadoArr.map( (tarea, index) => {
-      let tareaColor = tarea.completadoEn === null ? "No completada".red : tarea.completadoEn.toString().green;
+      let tareaColor = tarea.completadoEn ? tarea.completadoEn.toString().green : "No completada".red;
       console.log( ` ${(index + 1).toString().blue}. ${tarea.desc} :: ${tareaColor}`)
     })
   }
 
-  listadoFiltrado(isCompleted) {
-    
+  listadoFiltrado(isCompleted = true) {
+    if(isCompleted) {
+      this.listadoArr
+        .filter(tarea => tarea.completadoEn )
+        .map((tarea, index) => console.log( ` ${( (index + 1) + ".").blue} ${tarea.desc}` ));
+
+    } else {
+      this.listadoArr
+        .filter(tarea => tarea.completadoEn === null)
+        .map((tarea, index) => console.log( ` ${( (index + 1) + ".").blue} ${tarea.desc}` ));
+    }
   }
 
 }
