@@ -4,7 +4,7 @@ class Tarea {
 
   id = "";
   desc = "";
-  completadoEn = null;
+  completadaEn = null;
 
   constructor( desc ) {
 

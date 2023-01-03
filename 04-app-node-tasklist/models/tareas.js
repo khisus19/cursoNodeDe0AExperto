@@ -45,7 +45,7 @@ class Tareas {
 
   listadoCompleto() {
     this.listadoArr.map( (tarea, index) => {
-      let tareaColor = tarea.completadoEn ? tarea.completadoEn.toString().green : "No completada".red;
+      let tareaColor = tarea.completadaEn ? tarea.completadaEn.toString().green : "No completada".red;
       console.log( ` ${(index + 1).toString().blue}. ${tarea.desc} :: ${tareaColor}`)
     })
   }
@@ -53,12 +53,12 @@ class Tareas {
   listadoFiltrado(isCompleted = true) {
     if(isCompleted) {
       this.listadoArr
-        .filter(tarea => tarea.completadoEn )
+        .filter(tarea => tarea.completadaEn )
         .map((tarea, index) => console.log( ` ${( (index + 1) + ".").blue} ${tarea.desc}` ));
 
     } else {
       this.listadoArr
-        .filter(tarea => tarea.completadoEn === null)
+        .filter(tarea => tarea.completadaEn === null)
         .map((tarea, index) => console.log( ` ${( (index + 1) + ".").blue} ${tarea.desc}` ));
     }
   }
