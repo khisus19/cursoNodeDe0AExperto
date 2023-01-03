@@ -1,7 +1,7 @@
 import colors from "colors";
 
-import { inquirerMenu, pausaMenu, leerInput } from "./helpers/inquirer.js";
-import { filtrarTareas, guardarDB, leerDB } from "./helpers/interaccionesDB.js";
+import { inquirerMenu, pausaMenu, leerInput, listadoTareasBorrar, confirmar } from "./helpers/inquirer.js";
+import { guardarDB, leerDB } from "./helpers/interaccionesDB.js";
 import Tareas from "./models/tareas.js";
 
 
@@ -35,12 +35,20 @@ const main = async () => {
         tareas.listadoCompleto();
         break;
 
-      case "3":
+      case "3": // Listar Completadas
         tareas.listadoFiltrado();
         break;
 
-      case "4":
+      case "4": // Listar Pendientes
         tareas.listadoFiltrado( false );
+        break;
+
+      case "6": //Borrar
+        const id = await listadoTareasBorrar( tareas.listadoArr );
+        const ok = await confirmar("¿Esta seguro?");
+        if(ok) {
+          tareas.borrarTarea(id)
+        }
         break;
     }
 
