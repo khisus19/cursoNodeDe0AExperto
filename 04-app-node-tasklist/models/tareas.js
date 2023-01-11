@@ -8,9 +8,7 @@ class Tareas {
   
   _listado = {};
 
-
   get listadoArr() {
-
     const listado = [];
     Object.keys(this._listado).forEach(key => {
       const tarea = this._listado[key];
@@ -61,6 +59,23 @@ class Tareas {
         .filter(tarea => tarea.completadaEn === null)
         .map((tarea, index) => console.log( ` ${( (index + 1) + ".").blue} ${tarea.desc}` ));
     }
+  }
+
+  toggleCompletadas( ids = [] ) {
+    ids.forEach( id => {
+
+      const tarea = this._listado[id];
+      if ( !tarea.completadaEn ) {
+        tarea.completadaEn = new Date().toDateString();
+      }
+    });
+
+    this.listadoArr.forEach( tarea => {
+
+      if(!ids.includes(tarea.id)) {
+        this._listado[tarea.id].completadaEn = null;
+      }
+    })
   }
 
 }
