@@ -11,7 +11,7 @@ export class Busquedas {
 
   get mapboxParams() {
     return {
-      "access_token": "pk.eyJ1Ijoia2hpc3VzMTkiLCJhIjoiY2xjdGNlOGswMDA1NjNycDV1aGk2ZzFtZyJ9.6LKCLy1p9_UBt1FWu3_njQ",
+      "access_token": process.env.MAPBOX_KEY,
       "limit": 5,
       "language": "es"
     }
@@ -27,7 +27,12 @@ export class Busquedas {
       });
 
       const resp = await instance.get();
-      console.log(resp.data);
+      return resp.data.features.map( lugar => ({
+        id: lugar.id,
+        nombre: lugar.place_name_es,
+        long: lugar.center[0],
+        lat: lugar.center[1]
+      }))
       
       return []; // Retornar un array con los lugares
 
