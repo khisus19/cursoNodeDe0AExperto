@@ -16,8 +16,7 @@ export class Busquedas {
   get mapboxParams() {
     return {
       "access_token": process.env.MAPBOX_KEY,
-      "limit": 5,
-      "language": "es"
+      "limit": 5
     }
   }
 
@@ -25,7 +24,7 @@ export class Busquedas {
     return {
       "appid": process.env.OPENWEATHER_KEY,
       "units": "metric",
-      "lang": "es"
+      "lang": "en"
     }
   }
 
@@ -41,7 +40,7 @@ export class Busquedas {
       const resp = await instance.get();
       return resp.data.features.map( lugar => ({
         id: lugar.id,
-        nombre: lugar.place_name_es,
+        nombre: lugar.place_name,
         lon: lugar.center[0],
         lat: lugar.center[1]
       }))
@@ -64,11 +63,11 @@ export class Busquedas {
 
       const { data } = await instance.get();
       return { 
-        temp: data.main.temp,
-        feel: data.main.feels_like,
-        min: data.main.temp_min,
-        max: data.main.temp_max,
-        hum: data.main.humidity,
+        temp: data.main.temp + " °C",
+        feel: data.main.feels_like + " °C",
+        min: data.main.temp_min + " °C",
+        max: data.main.temp_max + " °C",
+        hum: data.main.humidity + "%",
         desc: data.weather[0].description
       }
 

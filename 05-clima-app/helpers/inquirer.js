@@ -5,19 +5,19 @@ const preguntas = [
   {
     type: "list",
     name: "opcion",
-    message: "¿Qué desea hacer?",
+    message: "What do you wish to do?",
     choices: [
       {
         value: 1,
-        name: `${ "1.".yellow } Buscar lugar`
+        name: `${ "1.".yellow } Search a place`
       },
       {
         value: 2,
-        name: `${ "2.".yellow } Historial`
+        name: `${ "2.".yellow } History`
       },
       {
         value: 0,
-        name: `${ "3.".yellow } Salir`
+        name: `${ "3.".yellow } Exit`
       }
     ]
   }
@@ -27,7 +27,7 @@ const pausaOpt = [
   {
     type: "input",
     name: "pausa",
-    message: `Presione ${ "enter".green } para continuar`
+    message: `Press ${ "enter".green } to continue`
   }
 ]
 
@@ -35,7 +35,7 @@ const inquirerMenu = async () => {
 
   console.clear();
   console.log("================================".green);
-  console.log("     Seleccione una opción".italic.white)
+  console.log("     Select an option".italic.white)
   console.log("================================\n".green);
 
   const { opcion } = await inquirer.prompt(preguntas)
@@ -59,7 +59,7 @@ const leerInput = async( message ) => {
       message,
       validate( value ) {
         if(value.length === 0) {
-          return "Por favor ingrese un valor";
+          return "Please, enter a search";
         }
         return true;
       }
@@ -81,14 +81,14 @@ const listarLugares = async ( lugares = [] ) => {
 
   choices.unshift({
     value: "0",
-    name: "0.".blue + " Cancelar"
+    name: "0.".blue + " Cancel"
   });
 
   const preguntas = [
     {
       type: "list",
       name: "id",
-      message: "Seleccione lugar",
+      message: "Select a place",
       choices
     }
   ]
@@ -124,7 +124,7 @@ const mostrarListadoChecklist = async ( tareas = [] ) => {
     {
       type: "checkbox",
       name: "ids",
-      message: "Seleccione",
+      message: "Select",
       choices
     }
   ]

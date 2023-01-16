@@ -1,5 +1,6 @@
-import * as dotenv from 'dotenv' 
-dotenv.config()
+import colors from "colors";
+import * as dotenv from 'dotenv' ;
+dotenv.config();
 
 
 import { inquirerMenu, leerInput, listarLugares, pausaMenu } from "./helpers/inquirer.js"
@@ -18,7 +19,7 @@ const main = async () => {
     switch (opt) {
       case 1:
         // mostrar mensaje
-        const termino = await leerInput("Ciudad: ");
+        const termino = await leerInput("City: ");
         
         // Buscar los lugares
         const lugares = await busquedas.buscarCiudad( termino );
@@ -36,22 +37,21 @@ const main = async () => {
         const { temp, feel, min, max, hum, desc} = await busquedas.temp(lugarSel.lat, lugarSel.lon);
 
         // Mostrar resultados
-        console.log("\nInformación de la ciudad\n");
-        console.log("Ciudad:", lugarSel.nombre);
+        console.log("\nCity's Information\n".magenta);
+        console.log("City:", lugarSel.nombre.magenta);
         console.log("Lat:", lugarSel.lat);
-        console.log("Long:", lugarSel.lon);
-        console.log("Temperatura:", temp, "°C");
-        console.log(`Temperatura: ${temp} °C`);
-        console.log("Sensación Térmica:", feel);
-        console.log("Mínima:", min);
-        console.log("Máxima:", max);
-        console.log("Humedad:", hum);
-        console.log("Descripción:", desc);
+        console.log("Lon:", lugarSel.lon);
+        console.log("Temperature:", temp.magenta);
+        console.log("Feels Like:", feel.magenta);
+        console.log("Minimun Temperature:", min.magenta);
+        console.log("Maximun Temperature:", max.magenta);
+        console.log("Humidity:", hum.magenta);
+        console.log("Description:", desc.magenta);
         break;
 
       case 2:
         if (busquedas.historial.length === 0) {
-          console.log("No has hecho ninguna busqueda");
+          console.log("You haven't search anything");
         } else {
           busquedas.historial.forEach( (lugar, i) => {
             const idx = `${ i + 1 }.`.green;
@@ -67,9 +67,6 @@ const main = async () => {
     if ( opt !== 0 ) await pausaMenu();
 
   } while(opt !== 0);
-
-
-
 
 }
 
