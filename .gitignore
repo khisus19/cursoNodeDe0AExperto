@@ -145,3 +145,6 @@ dist
 
 # Ignorar los txt de salida
 ./03-bases-node/salida/*.txt
+
+# Ignore databases
+**/db/
