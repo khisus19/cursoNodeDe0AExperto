@@ -63,10 +63,10 @@ export class Busquedas {
 
       const { data } = await instance.get();
       return { 
-        temp: data.main.temp + " °C",
-        feel: data.main.feels_like + " °C",
-        min: data.main.temp_min + " °C",
-        max: data.main.temp_max + " °C",
+        temp: data.main.temp + "°C",
+        feel: data.main.feels_like + "°C",
+        min: data.main.temp_min + "°C",
+        max: data.main.temp_max + "°C",
         hum: data.main.humidity + "%",
         desc: data.weather[0].description
       }
