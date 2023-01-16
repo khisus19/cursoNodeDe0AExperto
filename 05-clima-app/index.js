@@ -21,11 +21,16 @@ const main = async () => {
         const termino = await leerInput("Ciudad: ");
         
         // Buscar los lugares
-        const lugares = await busquedas.ciudad( termino );
+        const lugares = await busquedas.buscarCiudad( termino );
         
         // Seleccionar el lugar
         const id = await listarLugares(lugares);
+        if ( id === "0" ) continue;
+
         const lugarSel = lugares.find( l => l.id === id)
+
+        // Guardar en DB
+        busquedas.agregarHistorial(lugarSel.nombre);
 
         // Clima
         const { temp, feel, min, max, hum, desc} = await busquedas.temp(lugarSel.lat, lugarSel.lon);
@@ -45,7 +50,14 @@ const main = async () => {
         break;
 
       case 2:
-        console.log("Este es tu historial")
+        if (busquedas.historial.length === 0) {
+          console.log("No has hecho ninguna busqueda");
+        } else {
+          busquedas.historial.forEach( (lugar, i) => {
+            const idx = `${ i + 1 }.`.green;
+            console.log(`${idx} ${lugar}`)
+          })
+        }
         break;
 
       default:

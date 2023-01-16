@@ -1,12 +1,16 @@
+import fs from "fs";
+
 import axios from "axios";
 
 export class Busquedas {
 
-  historial = [ "Tegucigalpa", "Madrid", "San Jose"];
+  historial = [];
+  dbPath = "./db/historial.json"
 
   constructor() {
 
     // TODO: leer db si existe
+    this.leerDB()
   }
 
   get mapboxParams() {
@@ -25,7 +29,7 @@ export class Busquedas {
     }
   }
 
-  async ciudad( lugar = "" ){
+  async buscarCiudad( lugar = "" ){
 
     try {
       // petición http
@@ -67,17 +71,41 @@ export class Busquedas {
         hum: data.main.humidity,
         desc: data.weather[0].description
       }
-      
 
     } catch (error) {
-      throw error
+      return null
     }
-
-
-
-
   }
 
 
+  agregarHistorial( lugar = "") {
+
+    // Prevenir duplicados
+    this.historial.includes(lugar) || this.historial.unshift(lugar);
+
+    this.historial = this.historial.splice(0,5)
+    // Grabar en DB
+    this.guardarDB();
+  }
+
+  guardarDB() {
+
+    const payload = {
+      historial: this.historial
+    };
+
+    fs.writeFileSync(this.dbPath, JSON.stringify(payload));
+
+  }
+  
+  leerDB() {
+    if (!fs.existsSync(this.dbPath)) {
+      return null;
+    } 
+
+    const info = fs.readFileSync(this.dbPath, {encoding: "utf-8"})
+    const data = JSON.parse(info)
+    this.historial = data.historial;
+  }
 }
 
